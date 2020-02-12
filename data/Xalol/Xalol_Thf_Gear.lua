@@ -208,7 +208,7 @@ function init_gear_sets()
     sets.idle = {ammo="Staunch Tathlum",
         head="Dampening Tam",neck="Loricate Torque +1",ear1="Etiolation Earring",ear2="Genmei Earring",
         body="Meg. Cuirie +2",hands="Malignance Gloves",ring1="Defending Ring",ring2="Gelatinous Ring +1",
-        back="Moonbeam Cape",waist="Flume Belt +1",legs="Meg. Chausses +2",feet=gear.herculean_ta_feet}
+        back="Moonbeam Cape",waist="Flume Belt +1",legs="Meg. Chausses +2",feet="Malignance Boots"}
 		
     --sets.idle.Sphere = set_combine(sets.idle, {body="Mekosu. Harness"})
 

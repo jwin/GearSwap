@@ -83,7 +83,7 @@ function init_gear_sets()
 		body="Samnuha Coat",hands="Leyline Gloves",ring1="Kishar Ring",ring2="Rahab Ring",
 		back="Swith Cape +1",waist="Witful Belt",legs="Ayanmo Cosciales +2",feet="Carmine Greaves"}
 
-	sets.precast.FC.Utsusemi = set_combine(sets.precast.FC, {body="Passion Jacket"})
+	--sets.precast.FC.Utsusemi = set_combine(sets.precast.FC, {body="Passion Jacket"})
 
 	sets.precast.FC['Blue Magic'] = set_combine(sets.precast.FC, {})
 
@@ -137,7 +137,7 @@ function init_gear_sets()
 	sets.midcast['Blue Magic'].Physical = {ammo="Cheruski Needle",
 		head="Adhemar Bonnet",neck="Caro Necklace",ear1="Suppanomimi",ear2="Loquacious Earring",
 		body="Assim. Jubbah +2",hands="Jhakri Cuffs +2",ring1="Rufescent Ring",ring2="Apate Ring",
-		back=gear.wsd_jse_back,waist="Prosilo Belt",legs="Jhakri Slops +2",feet="Thereoid Greaves"}
+		back=gear.wsd_jse_back,waist="Prosilio Belt",legs="Jhakri Slops +2",feet="Thereoid Greaves"}
 	sets.midcast['Blue Magic'].Physical.Resistant = sets.midcast['Blue Magic'].Physical
 
 	sets.midcast['Blue Magic'].PhysicalAcc = sets.midcast['Blue Magic'].Physical
@@ -215,7 +215,7 @@ function init_gear_sets()
 	sets.midcast['Divine Magic'] = {ammo="Pemphredo Tathlum",
 		head="Jhakri Coronal +2",neck="Incanter's Torque",ear1="Etiolation Earring",ear2="Digni. Earring",
 		body="Jhakri Robe +2",hands="Jhakri Cuffs +2",ring1="Stikini Ring",ring2="Stikini Ring",
-		back="Cornflower Cape",waist="Luminary Sash",legs="Jhakri Slops +2",feet="Jhakri Pigaches +1"}
+		back="Cornflower Cape",waist="Eschan Stone",legs="Jhakri Slops +2",feet="Jhakri Pigaches +1"}
 
 	sets.midcast['Elemental Magic'] = {ammo="Pemphredo Tathlum",
 		head="Jhakri Coronal +2",neck="Eddy Necklace",ear1="Etiolation Earring",ear2="Friomisi Earring",
@@ -235,15 +235,15 @@ function init_gear_sets()
 	sets.element.Light = {} --ring2="Weatherspoon Ring"
 
 	sets.midcast.Cure = {ammo="Pemphredo Tathlum",
-		head="Dampening Tam",neck="Incanter's Torque",ear1="Lifestorm Earring",ear2="Andoaa Earring",
+		head="Dampening Tam",neck="Incanter's Torque",ear1="Etiolation Earring",ear2="Andoaa Earring",
 		body="Vrikodara Jupon",hands="Telchine Gloves",ring1="Stikini Ring",ring2="Stikini Ring",
 		back="Solemnity Cape",waist=gear.ElementalObi,legs="Carmine Cuisses +1",feet="Carmine Greaves"}
 
 	-- Breath Spells --
 
 	sets.midcast['Blue Magic'].Breath = {ammo="Mavi Tathlum",
-		head="Telchine Cap",neck="Mavi Scarf",ear1="Etiolation Earring",ear2="Digni. Earring",
-		body="Assimilator's Jubbah +2",hands="Luh. Bazubands +1",ring1="Kunaji Ring",ring2="Rufescent Ring",
+		head="Telchine Cap",neck="Incanter's Torque",ear1="Etiolation Earring",ear2="Digni. Earring",
+		body="Assimilator's Jubbah +2",hands="Jhakri Cuffs +2",ring1="Kunaji Ring",ring2="Rufescent Ring",
 		back="Cornflower Cape",feet="Luhlaza Charuqs +1"}
 
 	-- Physical Added Effect Spells most notably "Stun" spells --
@@ -251,19 +251,19 @@ function init_gear_sets()
 	sets.midcast['Blue Magic'].Stun = {ammo="Pemphredo Tathlum",
 		head="Jhakri Coronal +2",neck="Erra Pendant",ear1="Etiolation Earring",ear2="Digni. Earring",
 		body="Jhakri Robe +2",hands="Jhakri Cuffs +2",ring1="Stikini Ring",ring2="Stikini Ring",
-		back="Cornflower Cape",waist="Luminary Sash",legs="Jhakri Slops +2",feet="Jhakri Pigaches +1"}
+		back="Cornflower Cape",waist="Eschan Stone",legs="Jhakri Slops +2",feet="Jhakri Pigaches +1"}
 
 	sets.midcast['Blue Magic'].Stun.Resistant = {ammo="Falcon Eye",
 		head="Jhakri Coronal +2",neck="Erra Pendant",ear1="Etiolation Earring",ear2="Digni. Earring",
 		body="Jhakri Robe +2",hands="Jhakri Cuffs +2",ring1="Stikini Ring",ring2="Stikini Ring",
-		back="Cornflower Cape",waist="Olseni Belt",legs="Jhakri Slops +2",feet="Jhakri Pigaches +1"}
+		back="Cornflower Cape",waist="Eschan Stone",legs="Jhakri Slops +2",feet="Jhakri Pigaches +1"}
 
 	-- Other Specific Spells --
 
 	sets.midcast['Blue Magic']['White Wind'] = {ammo="Mavi Tathlum",
 		head="Dampening Tam",neck="Incanter's Torque",ear1="Etiolation Earring",ear2="Loquac. Earring",
-		body="Vrikodara Jupon",hands="Telchine Gloves",ring1="Janniston Ring",ring2="Lebeche Ring",
-		back="Solemnity Cape",waist=gear.ElementalObi,legs="Gyve Trousers",feet="Medium's Sabots"}
+		body="Vrikodara Jupon",hands="Telchine Gloves",ring1="Stikini Ring",ring2="Stikini Ring",
+		back="Solemnity Cape",waist=gear.ElementalObi,legs="Gyve Trousers",feet="Carmine Greaves"}
 					
 	sets.midcast['Blue Magic']['Healing Breeze'] = sets.midcast['Blue Magic']['White Wind']
 
@@ -278,12 +278,12 @@ function init_gear_sets()
 	sets.midcast['Blue Magic'].SkillBasedBuff = {ammo="Mavi Tathlum",
 		head="Telchine Cap",neck="Mirage Stole +1",ear1="Etiolation Earring",ear2="Loquac. Earring",
 		body="Assimilator's Jubbah +2",hands="Jhakri Cuffs +2",ring1="Stikini Ring",ring2="Stikini Ring",
-		back="Cornflower Cape",waist="Witful Belt",legs="Lengo Pants",feet="Luhlaza Charuqs +1"}
+		back="Cornflower Cape",waist="Witful Belt",legs="Psycloth Lappas",feet="Luhlaza Charuqs +1"}
 
 	sets.midcast['Blue Magic'].Buff = {ammo="Mavi Tathlum",
 		head="Telchine Cap",neck="Incanter's Torque",ear1="Etiolation Earring",ear2="Loquac. Earring",
 		body="Assimilator's Jubbah +2",hands="Jhakri Cuffs +2",ring1="Kishar Ring",ring2="Stikini Ring",
-		back="Aurist's Cape +1",waist="Witful Belt",legs="Lengo Pants",feet="Carmine Greaves"}
+		back="Aurist's Cape +1",waist="Witful Belt",legs="Psycloth Lappas",feet="Carmine Greaves"}
 
 	sets.midcast['Blue Magic']['Battery Charge'] = set_combine(sets.midcast['Blue Magic'].Buff, {head="Amalric Coif"})
 
@@ -298,21 +298,21 @@ function init_gear_sets()
 	-- Resting sets
 	sets.resting = {ammo="Staunch Tathlum",
 		head="Rawhide Mask",neck="Loricate Torque +1",ear1="Etiolation Earring", ear2="Genmei Earring",
-		body="Jhakri Robe +2",hands=gear.herculean_dt_hands,ring1="Defending Ring",ring2="Gelatinous Ring +1",
-		back="Moonbeam Cape",waist="Flume Belt +1",legs="Carmine Cuisses +1",feet="Battlecast Gaiters"}
+		body="Jhakri Robe +2",hands="Malignance Gloves",ring1="Defending Ring",ring2="Gelatinous Ring +1",
+		back="Moonbeam Cape",waist="Flume Belt +1",legs="Carmine Cuisses +1",feet="Malignance Boots"}
 
 	-- Idle sets
 	sets.idle = {ammo="Staunch Tathlum",
 		head="Rawhide Mask",neck="Loricate Torque +1",ear1="Etiolation Earring", ear2="Genmei Earring",
-		body="Jhakri Robe +2",hands=gear.herculean_dt_hands,ring1="Defending Ring",ring2="Gelatinous Ring +1",
-		back="Moonbeam Cape",waist="Flume Belt +1",legs="Carmine Cuisses +1",feet="Battlecast Gaiters"}
+		body="Jhakri Robe +2",hands="Malignance Gloves",ring1="Defending Ring",ring2="Gelatinous Ring +1",
+		back="Moonbeam Cape",waist="Flume Belt +1",legs="Carmine Cuisses +1",feet="Malignance Boots"}
 
 	--sets.idle.Sphere = set_combine(sets.idle, {body="Mekosu. Harness"})
 
 	sets.idle.PDT = {main="Bolelabunga",sub="Genbu's Shield",ammo="Staunch Tathlum",
 		head="Dampening Tam",neck="Loricate Torque +1",ear1="Etiolation Earring", ear2="Genmei Earring",
-		body="Ayanmo Corazza +2",hands=gear.herculean_dt_hands,ring1="Defending Ring",ring2="Gelatinous Ring +1",
-		back="Moonbeam Cape",waist="Flume Belt +1",legs="Ayanmo Cosciales +2",feet="Battlecast Gaiters"}
+		body="Ayanmo Corazza +2",hands="Malignance Gloves",ring1="Defending Ring",ring2="Gelatinous Ring +1",
+		back="Moonbeam Cape",waist="Flume Belt +1",legs="Ayanmo Cosciales +2",feet="Malignance Boots"}
 
 	--sets.idle.DTHippo = set_combine(sets.idle.PDT, {legs="Carmine Cuisses +1",feet="Hippo. Socks +1"})
 
@@ -368,8 +368,8 @@ function init_gear_sets()
 
 	sets.engaged.DTLite = {ammo="Ginsen",
 		head="Adhemar Bonnet",neck="Lissome Necklace",ear1="Cessance Earring",ear2="Brutal Earring",
-		body="Adhemar Jacket",hands="Adhemar Wristbands",ring1="Epona's Ring",ring2="Petrov Ring",
-		back=gear.da_jse_back,waist="Windbuffet Belt +1",legs=gear.herculean_ta_legs,feet=gear.herculean_ta_feet}
+		body="Adhemar Jacket",hands="Malignance Gloves",ring1="Epona's Ring",ring2="Defending Ring",
+		back=gear.da_jse_back,waist="Windbuffet Belt +1",legs=gear.herculean_ta_legs,feet="Malignance Boots"}
 
 	sets.engaged.PDT = {ammo="Ginsen",
 		head="Adhemar Bonnet",neck="Lissome Necklace",ear1="Cessance Earring",ear2="Brutal Earring",

@@ -97,12 +97,12 @@ function init_gear_sets()
     sets.midcast.FastRecast = {main="Malevolence",sub="Genbu's Shield",range="Dunna",
 		head="Amalric Coif",neck="Voltsurge Torque",ear1="Etiolation Earring",ear2="Malignance Earring",
 		body="Jhakri Robe +2",hands="Jhakri Cuffs +2",ring1="Kishar Ring",ring2="Rahab Ring",
-        back="Swith Cape +1",waist="Witful Belt",legs="Lengo Pants",feet="Jhakri Pigaches +1"}
+        back="Swith Cape +1",waist="Witful Belt",legs="Psycloth Lappas",feet="Jhakri Pigaches +1"}
 
 	sets.midcast.Geomancy = {main="Idris",sub="Genbu's Shield",range="Dunna",
 		head="Azimuth Hood +1",neck="Incanter's Torque",ear1="Etiolation Earring",ear2="Malignance Earring",
 		body="Bagua Tunic +1",hands="Geo. Mitaines +2",ring1="Stikini Ring",ring2="Stikini Ring",
-		back="Lifestream Cape",waist="Witful Belt",legs="Lengo Pants",feet="Jhakri Pigaches +1"}
+		back="Lifestream Cape",waist="Witful Belt",legs="Psycloth Lappas",feet="Jhakri Pigaches +1"}
 
 
 	--Extra Indi duration as long as you can keep your 900 skill cap.
