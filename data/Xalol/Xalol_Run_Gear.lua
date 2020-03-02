@@ -381,8 +381,8 @@ function init_gear_sets()
 	
     sets.engaged.Tank = {ammo="Staunch Tathlum",
             head="Meghanada Visor +1",neck="Loricate Torque +1",ear1="Genmei Earring",ear2="Odnowa Earring +1",
-            body="Futhark Coat +1",hands=gear.herculean_dt_hands,ring1="Defending Ring",ring2="Warden's Ring",
-            back="Evasionist's Cape",waist="Engraved Belt",legs=gear.herculean_dt_legs,feet="Erilaz Greaves +1"}
+            body="Futhark Coat +1",hands="Meg. Gloves +2",ring1="Defending Ring",ring2="Gelatinous Ring +1",
+            back="Evasionist's Cape",waist="Flume Belt +1",legs=gear.herculean_ta_legs,feet=gear.herculean_ta_feet}
     sets.engaged.SomeAcc.Tank = sets.engaged.Tank
 	sets.engaged.Acc.Tank = sets.engaged.Tank
 	sets.engaged.HighAcc.Tank = sets.engaged.Tank

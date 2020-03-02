@@ -170,7 +170,7 @@ function init_gear_sets()
 	-- Magical Spells --
 
 	sets.midcast['Blue Magic'].Magical = {ammo="Pemphredo Tathlum",
-		head="Jhakri Coronal +2",neck="Eddy Necklace",ear1="Digni. Earring",ear2="Friomisi Earring",
+		head="Jhakri Coronal +2",neck="Eddy Necklace",ear1="Regal Earring",ear2="Friomisi Earring",
 		body="Jhakri Robe +2",hands="Amalric Gages",ring1="Shiva Ring",ring2="Acumen Ring",
 		back="Cornflower Cape",waist=gear.ElementalObi,legs="Amalric Slops",feet="Jhakri Pigaches +1"}
 					 

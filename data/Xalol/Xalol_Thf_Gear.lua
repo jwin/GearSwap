@@ -221,17 +221,17 @@ function init_gear_sets()
 
     sets.defense.PDT = {ammo="Staunch Tathlum",
         head="Dampening Tam",neck="Loricate Torque +1",ear1="Odnowa Earring +1",ear2="Genmei Earring",
-        body="Meg. Cuirie +2",hands="Meg. Gloves +2",ring1="Defending Ring",ring2="Gelatinous Ring +1",
+        body="Meg. Cuirie +2",hands="Malignance Gloves",ring1="Defending Ring",ring2="Gelatinous Ring +1",
         back="Moonbeam Cape",waist="Flume Belt +1",legs="Meg. Chausses +2",feet="Malignance Boots"}
 
     sets.defense.MDT = {ammo="Staunch Tathlum",
         head="Dampening Tam",neck="Loricate Torque +1",ear1="Etiolation Earring",ear2="Genmei Earring",
-        body="Meg. Cuirie +2",hands="Floral Gauntlets",ring1="Defending Ring",ring2="Archon Ring",
+        body="Meg. Cuirie +2",hands="Malignance Gloves",ring1="Defending Ring",ring2="Archon Ring",
         back="Moonbeam Cape",waist="Eschan Stone",legs=gear.herculean_dt_legs,feet="Malignance Boots"}
 		
 	sets.defense.MEVA = {ammo="Staunch Tathlum",
 		head=gear.herculean_wsd_head,neck="Loricate Torque +1",ear1="Etiolation Earring",ear2="Genmei Earring",
-		body="Adhemar Jacket",hands="Leyline Gloves",ring1="Defending Ring",ring2="Archon Ring",
+		body="Adhemar Jacket",hands="Malignance Gloves",ring1="Defending Ring",ring2="Archon Ring",
 		back="Moonbeam Cape",waist="Eschan Stone",legs=gear.herculean_dt_legs,feet="Malignance Boots"}
 
 
@@ -296,4 +296,41 @@ function select_default_macro_book()
     else
         set_macro_page(5, 2)
     end
+end
+
+--Job Specific Trust Overwrite
+function check_trust()
+	if not moving then
+		if state.AutoTrustMode.value and not areas.Cities:contains(world.area) and (buffactive['Elvorseal'] or buffactive['Reive Mark'] or not player.in_combat) then
+			local party = windower.ffxi.get_party()
+			if party.p5 == nil then
+				local spell_recasts = windower.ffxi.get_spell_recasts()
+			
+				if spell_recasts[980] < spell_latency and not have_trust("Yoran-Oran") then
+					windower.send_command('input /ma "Yoran-Oran (UC)" <me>')
+					tickdelay = os.clock() + 3
+					return true
+				elseif spell_recasts[952] < spell_latency and not have_trust("Koru-Moru") then
+					windower.send_command('input /ma "Koru-Moru" <me>')
+					tickdelay = os.clock() + 3
+					return true
+				elseif spell_recasts[979] < spell_latency and not have_trust("Selh'teus") then
+					windower.send_command('input /ma "Selh\'teus" <me>')
+					tickdelay = os.clock() + 3
+					return true
+				elseif spell_recasts[967] < spell_latency and not have_trust("Kupipi") then
+					windower.send_command('input /ma "Kupipi" <me>')
+					tickdelay = os.clock() + 3
+					return true
+				elseif spell_recasts[914] < spell_latency and not have_trust("Joachim") then
+					windower.send_command('input /ma "Joachim" <me>')
+					tickdelay = os.clock() + 3
+					return true
+				else
+					return false
+				end
+			end
+		end
+	end
+	return false
 end
