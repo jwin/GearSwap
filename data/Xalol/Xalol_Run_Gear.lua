@@ -242,24 +242,24 @@ function init_gear_sets()
     sets.idle = {ammo='Staunch Tathlum',
 		head="Rawhide Mask",neck="Loricate Torque +1",ear1="Genmei Earring",ear2="Etiolation Earring",
 		body="Runeist Coat +1",hands=gear.herculean_refresh_hands,ring1="Defending Ring",ring2="Gelatinous Ring +1",
-		back="Solemnity Cape",waist="Flume Belt +1",legs="Carmine Cuisses +1",feet=gear.herculean_refresh_feet}
+		back="Moonbeam Cape",waist="Flume Belt +1",legs="Carmine Cuisses +1",feet="Carmine Greaves"}
 		
     sets.idle.Sphere = set_combine(sets.idle,{body="Mekosu. Harness"})
 			
 	sets.idle.Tank = {ammo="Staunch Tathlum",
         head="Fu. Bandeau +1",neck="Loricate Torque +1",ear1="Genmei Earring",ear2="Odnowa Earring +1",
         body="Runeist Coat +1",hands=gear.herculean_dt_hands,ring1="Defending Ring",ring2="Moonbeam Ring",
-        back="Shadow Mantle",waist="Flume Belt +1",legs="Erilaz Leg Guards",feet="Erilaz Greaves +1"}
+        back="Moonbeam Cape",waist="Flume Belt +1",legs="Erilaz Leg Guards",feet="Erilaz Greaves +1"}
 		
 	sets.idle.KiteTank = {ammo="Staunch Tathlum",
         head="Fu. Bandeau +1",neck="Vim Torque +1",ear1="Genmei Earring",ear2="Odnowa Earring +1",
         body="Futhark Coat +1",hands=gear.herculean_dt_hands,ring1="Defending Ring",ring2="Moonbeam Ring",
-        back="Solemnity Cape",waist="Flume Belt +1",legs="Carmine Cuisses +1",feet="Hippo. Socks +1"}
+        back="Moonbeam Cape",waist="Flume Belt +1",legs="Carmine Cuisses +1",feet="Hippo. Socks +1"}
 
 	sets.idle.Weak = {ammo='Staunch Tathlum',
 		head="Rawhide Mask",neck="Loricate Torque +1",ear1="Genmei Earring",ear2="Odnowa Earring +1",
 		body="Runeist Coat +1",hands=gear.herculean_refresh_hands,ring1="Defending Ring",ring2="Warden's Ring",
-		back="Solemnity Cape",waist="Flume Belt +1",legs="Carmine Cuisses +1",feet=gear.herculean_refresh_feet}
+		back="Moonbeam Cape",waist="Flume Belt +1",legs="Carmine Cuisses +1",feet="Carmine Greaves"}
 
 	sets.Kiting = {legs="Carmine Cuisses +1"}
 	

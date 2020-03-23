@@ -6,7 +6,7 @@ function user_setup()
     state.CastingMode:options('Normal', 'Resistant')
     state.IdleMode:options('Normal', 'PDT')
 	--state.ExtraMeleeMode = M{['description']='Extra Melee Mode', 'None', 'DWMax'}
-	state.Weapons:options('Default','DualWeapons','DualSavageWeapons','DualLeadenRanged','DualLeadenMelee','None')
+	state.Weapons:options('Default','DualSavageWeapons','DualLeadenRanged','DualLeadenMelee','None')
 	state.CompensatorMode:options('300','1000','Never','Always')
 
     gear.RAbullet = "Eminent Bullet"
@@ -15,7 +15,7 @@ function user_setup()
     gear.QDbullet = "Orichalc. Bullet"
     options.ammo_warning_limit = 10
 
-	--gear.tp_ranger_jse_back = {name="Camulus's Mantle",augments={'AGI+20','Rng.Acc.+20 Rng.Atk.+20','Rng.Acc.+10','"Store TP"+10',}}
+	gear.tp_ranger_jse_back = {name="Camulus's Mantle",augments={'AGI+20','Rng.Acc.+20 Rng.Atk.+20','Rng.Acc.+10','"Store TP"+10',}}
 	--gear.snapshot_jse_back = {name="Camulus's Mantle",augments={'"Snapshot"+10',}}
 	--gear.tp_jse_back = {name="Camulus's Mantle",augments={'DEX+20','Accuracy+20 Attack+20','Accuracy+10','"Store TP"+10',}}
 	--gear.ranger_wsd_jse_back = {name="Camulus's Mantle",augments={'AGI+20','Rng.Acc.+20 Rng.Atk.+20','AGI+10','Weapon skill damage +10%',}}
@@ -23,7 +23,6 @@ function user_setup()
 	--gear.str_wsd_jse_back = {name="Camulus's Mantle",augments={'STR+20','Accuracy+20 Attack+20','STR+10','Weapon skill damage +10%',}}
 	gear.da_jse_back = {name="Camulus's Mantle", augments={'DEX+20','Accuracy+20 Attack+20','Accuracy+10','"Dbl.Atk."+10',}}
 	gear.str_wsd_jse_back = gear.magic_wsd_jse_back
-	gear.tp_ranger_jse_back = gear.da_jse_back
 	gear.snapshot_jse_back = gear.da_jse_back
 
     -- Additional local binds
@@ -143,7 +142,7 @@ function init_gear_sets()
 	
 	sets.precast.WS['Savage Blade'] = {ammo=gear.WSbullet,
         head=gear.herculean_wsd_head,neck="Caro Necklace",ear1="Moonshade Earring",ear2="Ishvara Earring",
-        body="Laksa. Frac +2",hands="Meg. Gloves +2",ring1="Apate Ring",ring2="Rufescent Ring",
+        body="Laksa. Frac +2",hands="Meg. Gloves +2",ring1="Regal Ring",ring2="Rufescent Ring",
         back=gear.str_wsd_jse_back,waist="Prosilio Belt",legs=gear.herculean_wsd_legs,feet=gear.herculean_ta_feet}
 
     sets.precast.WS['Savage Blade'].Acc = {ammo=gear.WSbullet,
@@ -221,12 +220,12 @@ function init_gear_sets()
     -- Ranged gear
     sets.midcast.RA = {ammo=gear.RAbullet,
         head="Meghanada Visor +1",neck="Sanctity Necklace",ear1="Enervating Earring",ear2="Suppanomimi",
-        body="Meg. Cuirie +2",hands="Malignance Gloves",ring1="Regal Ring",ring2="Meghanada Ring",
-        back=gear.tp_ranger_jse_back,waist="Eschan Stone",legs="Lak. Trews +1",feet="Malignance Boots"}
+        body="Meg. Cuirie +2",hands="Malignance Gloves",ring1="Apate Ring",ring2="Meghanada Ring",
+        back=gear.tp_ranger_jse_back,waist="Eschan Stone",legs="Meg. Chausses +2",feet="Malignance Boots"}
 
     sets.midcast.RA.Acc = {ammo=gear.RAbullet,
         head="Meghanada Visor +1",neck="Sanctity Necklace",ear1="Enervating Earring",ear2="Suppanomimi",
-        body="Laksa. Frac +2",hands="Meg. Gloves +2",ring1="Regal Ring",ring2="Meghanada Ring",
+        body="Laksa. Frac +2",hands="Meg. Gloves +2",ring1="Apate Ring",ring2="Meghanada Ring",
         back=gear.tp_ranger_jse_back,waist="Eschan Stone",legs="Meg. Chausses +2",feet="Malignance Boots"}
 		
 	--sets.buff['Triple Shot'] = {body="Chasseur's Frac +1"}
@@ -269,8 +268,7 @@ function init_gear_sets()
 	--sets.DWMax = {ear1="Dudgeon Earring",ear2="Heartseeker Earring",body="Adhemar Jacket",hands="Floral Gauntlets",waist="Reiki Yotai"}
 
 	-- Weapons sets
-	sets.weapons.Default = {main="Kaja Sword",sub="Nusku Shield",range="Molybdosis"}
-	sets.weapons.DualWeapons = {main="Kaja Sword",sub="Fettering Blade",range="Molybdosis"}
+	sets.weapons.Default = {main="Fettering Blade",sub="Nusku Shield",range="Molybdosis"}
 	sets.weapons.DualSavageWeapons = {main="Kaja Sword",sub="Blurred Knife +1",range="Anarchy +2"}
 	sets.weapons.DualLeadenRanged = {main="Kaja Sword",sub="Fettering Blade",range="Molybdosis"}
 	sets.weapons.DualLeadenMelee = {main="Kaja Sword",sub="Fettering Blade",range="Molybdosis"}
