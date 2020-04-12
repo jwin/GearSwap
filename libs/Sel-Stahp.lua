@@ -41,6 +41,7 @@
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 --Requires Gearswap and Motenten includes.
 being_attacked = false
+engaging = os.clock()
 
 include('Sel-MonsterAbilities.lua')
 
@@ -138,15 +139,18 @@ windower.raw_register_event('action', function(act)
 	
 	if curact.category == 1 then
 		if targetsMe then
-			if state.AutoEngageMode.value and actor.race == 0 and player.status == 'Idle' and not moving then
-				if player.target.type == "MONSTER" then
-					windower.chat.input('/attack')
-				elseif player.target.type ~= 'NONE' then
-					send_command('setkey escape down; wait .2;setkey escape up')
-				end
+			if state.AutoEngageMode.value and actor.race == 0 and math.sqrt(actor.distance) < (3.2 + actor.model_size) and player.status == 'Idle' and not (moving or engaging > os.clock() or actor.name:contains("'s ")) then
+				engaging = os.clock() + 2
+				
+				packets.inject(packets.new('outgoing', 0x1a, {
+					['Target'] = actor.id,
+					['Target Index'] = actor.index,
+					['Category']     = 0x02,
+				}))
+				
 			elseif player.status == 'Idle' and not (being_attacked or midaction() or pet_midaction()) then
 				being_attacked = true
-				send_command('gs c forceequip')
+				windower.send_command('gs c forceequip')
 			end
 			being_attacked = true
 		end
@@ -182,18 +186,18 @@ windower.raw_register_event('action', function(act)
 				if state.DefenseMode.value ~= 'Physical' then
 					state.DefenseMode:set('Physical')
 					send_command('gs c forceequip')
+					if state.DisplayMode.value then update_job_states()	end
 				end
-				return
 			else
 				state.DefenseMode:reset()
 				send_command('gs c forceequip')
 				if state.DisplayMode.value then update_job_states()	end
-				return
 			end
-		elseif not midaction() and not pet_midaction() and (targetsMe or (otherTarget.in_alliance and targetsDistance < 10)) then
+		elseif not (actor.id == player.id or midaction() or pet_midaction()) and (targetsMe or (otherTarget.in_alliance and targetsDistance < 10)) then
+			--reequip proper gear after curaga/recieved buffs
 			send_command('gs c forceequip')
-			return
 		end
+		return
 	end
 	
 	-- Make sure it's not US from this point on!
@@ -258,7 +262,7 @@ windower.raw_register_event('action', function(act)
 	end
 	
 	-- Make sure this is our target. 	send_command('input /echo Actor:'..actor.id..' Target:'..player.target.id..'')
-	if curact.param == 24931 then
+	if curact.param == 24931 then --24931 is initiation paramater for action category 7 and 8
 		if isTarget and state.AutoStunMode.value and player.target.type == "MONSTER" and not moving then
 			if StunAbility:contains(act_info.name) and not midaction() and not pet_midaction() then
 				gearswap.refresh_globals(false)				

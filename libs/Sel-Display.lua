@@ -125,7 +125,15 @@ function update_job_states()
         h='\\cs(255,192,0)', -- Yellow for active booleans and non-default modals
 		w='\\cs(255,255,255)', -- White for labels and default modals
         n='\\cs(192,192,192)', -- White for labels and default modals
-        s='\\cs(96,96,96)' -- Gray for inactive booleans
+        s='\\cs(96,96,96)', -- Gray for inactive booleans
+		Fire='\\cs(255,80,80)', -- Red For Fire Element
+		Ice='\\cs(140,160,255)', -- Light Blue For Ice Element
+		Wind='\\cs(110,255,110)', -- Light Green For Wind Element
+		Earth='\\cs(220,214,110)', -- Brown/Yellow For Earth Element
+		Lightning='\\cs(190,90,190)', -- Purple For Lightning Element
+		Water='\\cs(110,110,255)', -- Blue For Water Element
+		Light='\\cs(255,255,155)', -- Light Yellow For Light Element
+		Dark='\\cs(90,90,90)', -- Dark Grey For Dark Element
     }
     if state.DisplayColors then
 		clr = state.DisplayColors
@@ -157,6 +165,7 @@ function update_job_states()
 		LearningMode = "Learning",
 		ElementalWheel = "Elemental Wheel",
 		MagicBurstMode = "Magic Burst",
+		SkillChainMode = "SkillchainMode",
 		RecoverMode = "Recover MP",
 		ElementalMode = "Element",
 		ExtraSongsMode = "Songs",
@@ -321,11 +330,14 @@ function update_job_states()
 			if state.WeaponskillMode.value ~= 'Match' then
 				stateBox:append(string.format("%sWeaponskill: %s%s    ", clr.w, clr.h, state.WeaponskillMode.value))
 			end
+			if state.SkillchainMode.value ~= 'Off' and state.DefenseMode.value == 'None' then
+				stateBox:append(string.format("%sSkillchain Mode: %s%s    ", clr.w, clr.h, state.SkillchainMode.value))
+			end
 		elseif n == 'ElementalMode' then
-				stateBox:append(string.format("%sElement: %s%s    ", clr.w, clr.h, state.ElementalMode.value))
+				stateBox:append(string.format("%sElement: %s%s    ", clr.w, clr[state.ElementalMode.value], state.ElementalMode.value))
 		elseif n == 'RuneElement' then
 				if not state.AutoRuneMode.value and (player.main_job == 'RUN' or player.sub_job == 'RUN') then
-					stateBox:append(string.format("%sRune: %s%s    ", clr.w, clr.h, state.RuneElement.value))
+					stateBox:append(string.format("%sRune: %s%s    ", clr.w, clr[data.elements.runes_lookup[state.RuneElement.value]], state.RuneElement.value))
 				end
 		elseif n == 'LearningMode' then
 			if state.LearningMode.value and state.DefenseMode.value == 'None' then

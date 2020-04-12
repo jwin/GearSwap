@@ -39,10 +39,6 @@
 --  |____|   |____/\___  (____  /____  >\___  > /_______  /\____/  |___|  /\____/|__|    \___  \____ ||__||__|    |__| |___|  |__/____  >  |__|  |__|____/\___  > /\ 
 --                     \/     \/     \/     \/          \/              \/                   \/     \/                      \/        \/                      \/  \/ 
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
--- NOTE: I do not play run, so this will not be maintained for 'active' use. 
--- It is added to the repository to allow people to have a baseline to build from,
--- and make sure it is up-to-date with the library API.
-
 
 -------------------------------------------------------------------------------------------------------------------
 -- Setup functions for this job.  Generally should not be modified.
@@ -55,7 +51,6 @@ function get_sets()
 	include('Sel-Include.lua')
 end
 
-
 -- Setup vars that are user-independent.
 function job_setup()
 
@@ -66,6 +61,7 @@ function job_setup()
     state.Buff.Hasso = buffactive.Hasso or false
     state.Buff.Seigan = buffactive.Seigan or false
 	state.Stance = M{['description']='Stance','Hasso','Seigan','None'}
+    state.Steps = M{['description']='Current Step', 'Quickstep','Box Step','Stutter Step'}
 	
 	autows = 'Resolution'
 	autofood = 'Miso Ramen'
@@ -178,11 +174,6 @@ function job_customize_melee_set(meleeSet)
 
     return meleeSet
 
-end
-
-function job_customize_idle_set(idleSet)
-
-    return idleSet
 end
 
 function job_customize_defense_set(defenseSet)
@@ -313,16 +304,14 @@ function job_self_command(commandArgs, eventArgs)
         
 			if under3FMs then
 				if abil_recasts[220] < latency then
-				send_command('@input /ja "'..state.CurrentStep.value..'" <t>')
-				state.CurrentStep:cycle()
+				send_command('@input /ja "'..state.Steps.value..'" <t>')
 				return
 				end
 			elseif abil_recasts[221] < latency then
 				windower.chat.input('/ja "Animated Flourish" <t>')
 				return
 			elseif abil_recasts[220] < latency and not buffactive['Finishing Move 5'] then
-				send_command('@input /ja "'..state.CurrentStep.value..'" <t>')
-				state.CurrentStep:cycle()
+				send_command('@input /ja "'..state.Steps.value..'" <t>')
 				return
 			elseif not check_auto_tank_ws() then
 				if not state.AutoTankMode.value then add_to_chat(123,'Dancer job abilities not needed.') end
@@ -338,8 +327,8 @@ end
 -------------------------------------------------------------------------------------------------------------------
 
 function weather_rune_match()
-    weather_rune = buffactive[elements.rune_of[world.weather_element] or '']
-    day_rune = buffactive[elements.rune_of[world.day_element] or '']
+    weather_rune = buffactive[data.elements.rune_of[world.weather_element] or '']
+    day_rune = buffactive[data.elements.rune_of[world.day_element] or '']
     
     if weather_rune or day_rune then
 		return true
@@ -425,7 +414,7 @@ function check_hasso()
 end
 
 function check_buff()
-	if state.AutoBuffMode.value ~= 'Off' and not areas.Cities:contains(world.area) then
+	if state.AutoBuffMode.value ~= 'Off' and not data.areas.cities:contains(world.area) then
 		local spell_recasts = windower.ffxi.get_spell_recasts()
 		for i in pairs(buff_spell_lists[state.AutoBuffMode.Value]) do
 			if not buffactive[buff_spell_lists[state.AutoBuffMode.Value][i].Buff] and (buff_spell_lists[state.AutoBuffMode.Value][i].When == 'Always' or (buff_spell_lists[state.AutoBuffMode.Value][i].When == 'Combat' and (player.in_combat or being_attacked)) or (buff_spell_lists[state.AutoBuffMode.Value][i].When == 'Engaged' and player.status == 'Engaged') or (buff_spell_lists[state.AutoBuffMode.Value][i].When == 'Idle' and player.status == 'Idle') or (buff_spell_lists[state.AutoBuffMode.Value][i].When == 'OutOfCombat' and not (player.in_combat or being_attacked))) and spell_recasts[buff_spell_lists[state.AutoBuffMode.Value][i].SpellID] < spell_latency and silent_can_use(buff_spell_lists[state.AutoBuffMode.Value][i].SpellID) then
@@ -506,6 +495,14 @@ buff_spell_lists = {
 	Default = {
 		{Name='Crusade',	Buff='Enmity Boost',	SpellID=476,	Reapply=false},
 		{Name='Temper',		Buff='Multi Strikes',	SpellID=493,	Reapply=false},
+		{Name='Haste',		Buff='Haste',			SpellID=57,		Reapply=false},
+		{Name='Refresh',	Buff='Refresh',			SpellID=109,	Reapply=false},
+		{Name='Phalanx',	Buff='Phalanx',			SpellID=106,	Reapply=false},
+	},
+	
+	Tank = {
+		{Name='Crusade',	Buff='Enmity Boost',	SpellID=476,	Reapply=false},
+		{Name='Cocoon',		Buff='Defense Boost',	SpellID=547,	Reapply=false},
 		{Name='Haste',		Buff='Haste',			SpellID=57,		Reapply=false},
 		{Name='Refresh',	Buff='Refresh',			SpellID=109,	Reapply=false},
 		{Name='Phalanx',	Buff='Phalanx',			SpellID=106,	Reapply=false},

@@ -102,7 +102,7 @@ function job_post_precast(spell, spellMap, eventArgs)
 		if (WSset.ear1 == "Moonshade Earring" or WSset.ear2 == "Moonshade Earring") then
 			-- Replace Moonshade Earring if we're at cap TP
 			if get_effective_player_tp(spell, WSset) > 3200 then
-				if elemental_obi_weaponskills:contains(spell.english) then
+				if data.weaponskills.elemental:contains(spell.english) then
 					if wsacc:contains('Acc') and sets.MagicalAccMaxTP then
 						equip(sets.MagicalAccMaxTP[spell.english] or sets.MagicalAccMaxTP)
 					elseif sets.MagicalMaxTP then
@@ -149,26 +149,57 @@ end
 
 -- Set eventArgs.handled to true if we don't want any automatic gear equipping to be done.
 function job_post_midcast(spell, spellMap, eventArgs)
-	if spell.action_type == 'Ranged Attack' then
-		if state.Buff['Camouflage'] and sets.buff.Camouflage then
-			if sets.buff['Camouflage'][state.RangedMode.value] then
-				equip(sets.buff['Camouflage'][state.RangedMode.value])
-			else
-				equip(sets.buff['Camouflage'])
-			end
-		end
-		if state.Buff['Double Shot'] and sets.buff['Double Shot'] then
-			if sets.buff['Double Shot'][state.RangedMode.value] then
-				equip(sets.buff['Double Shot'][state.RangedMode.value])
-			else
-				equip(sets.buff['Double Shot'])
-			end
-		end
-
-		if state.Buff.Barrage and sets.buff.Barrage then
-			equip(sets.buff.Barrage)
-		end
-	end
+    if spell.action_type == 'Ranged Attack' then
+        if state.Buff['Camouflage'] and sets.buff.Camouflage then
+            if sets.buff['Camouflage'][state.RangedMode.value] then
+                equip(sets.buff['Camouflage'][state.RangedMode.value])
+            else
+                equip(sets.buff['Camouflage'])
+            end
+        end
+        if state.Buff['Double Shot'] and sets.buff['Double Shot'] then
+            if classes.CustomRangedGroups:contains('AM') then
+				if sets.buff['Double Shot'][state.Weapons.value] then
+					if sets.buff['Double Shot'][state.Weapons.value][state.RangedMode.value] then
+						if sets.buff['Double Shot'][state.Weapons.value][state.RangedMode.value].AM then
+							equip(sets.buff['Double Shot'][state.Weapons.value][state.RangedMode.value].AM)
+						else
+							equip(sets.buff['Double Shot'][state.Weapons.value][state.RangedMode.value])
+						end
+					elseif sets.buff['Double Shot'][state.Weapons.value].AM then
+						equip(sets.buff['Double Shot'][state.Weapons.value].AM)
+					else
+						equip(sets.buff['Double Shot'][state.Weapons.value])
+					end
+				elseif sets.buff['Double Shot'][state.RangedMode.value] then
+					if sets.buff['Double Shot'][state.RangedMode.value].AM then
+						equip(sets.buff['Double Shot'][state.RangedMode.value].AM)
+					else
+						equip(sets.buff['Double Shot'][state.RangedMode.value])
+					end
+				elseif sets.buff['Double Shot'].AM then
+					equip(sets.buff['Double Shot'])
+				else
+					equip(sets.buff['Double Shot'])
+				end
+            else
+				if sets.buff['Double Shot'][state.Weapons.value] then
+					if sets.buff['Double Shot'][state.Weapons.value][state.RangedMode.value] then
+						equip(sets.buff['Double Shot'][state.Weapons.value][state.RangedMode.value])
+					else
+						equip(sets.buff['Double Shot'][state.Weapons.value])
+					end
+				elseif sets.buff['Double Shot'][state.RangedMode.value] then
+					equip(sets.buff['Double Shot'][state.RangedMode.value])
+				else
+					equip(sets.buff['Double Shot'])
+				end
+            end
+        end
+        if state.Buff.Barrage and sets.buff.Barrage then
+            equip(sets.buff.Barrage)
+        end
+    end
 end
 
 -------------------------------------------------------------------------------------------------------------------
@@ -181,12 +212,12 @@ end
 function job_buff_change(buff, gain)
 	if buff:contains('Aftermath') then
 		classes.CustomRangedGroups:clear()
-		if player.equipment.Ranged then
-			if (player.equipment.Ranged == 'Armageddon' and (buffactive['Aftermath: Lv.1'] or buffactive['Aftermath: Lv.2'] or buffactive['Aftermath: Lv.3']))
-			or (player.equipment.Ranged == 'Gandiva' and (buffactive['Aftermath: Lv.1'] or buffactive['Aftermath: Lv.2'] or buffactive['Aftermath: Lv.3']))
-			or (player.equipment.Ranged == "Gastraphetes" and state.Buff['Aftermath: Lv.3'])
-			or (player.equipment.Ranged == "Annihilator" and state.Buff['Aftermath'])
-			or (player.equipment.Ranged == "Yoichinoyumi" and state.Buff['Aftermath']) then
+		if player.equipment.range then
+			if (player.equipment.range == 'Armageddon' and (buffactive['Aftermath: Lv.1'] or buffactive['Aftermath: Lv.2'] or buffactive['Aftermath: Lv.3']))
+			or (player.equipment.range == 'Gandiva' and (buffactive['Aftermath: Lv.1'] or buffactive['Aftermath: Lv.2'] or buffactive['Aftermath: Lv.3']))
+			or (player.equipment.range == "Gastraphetes" and state.Buff['Aftermath: Lv.3'])
+			or (player.equipment.range == "Annihilator" and state.Buff['Aftermath'])
+			or (player.equipment.range == "Yoichinoyumi" and state.Buff['Aftermath']) then
 				classes.CustomRangedGroups:append('AM')
 			end
 		end
@@ -195,7 +226,7 @@ end
 
 -- Called by the 'update' self-command.
 function job_update(cmdParams, eventArgs)
-    if cmdParams[1] == 'user' and not areas.Cities:contains(world.area) then
+    if cmdParams[1] == 'user' and not data.areas.cities:contains(world.area) then
         if not buffactive['Velocity Shot'] then
             send_command('@input /ja "Velocity Shot" <me>')
         end
