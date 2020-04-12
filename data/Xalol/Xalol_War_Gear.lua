@@ -207,7 +207,7 @@ function init_gear_sets()
 	-- Weapons sets
 	sets.weapons.Greataxe = {main="Aganoshe",sub="Utu Grip"}
 	sets.weapons.Greatsword = {main="Montante +1",sub="Utu Grip"}
-	sets.weapons.SwordShield = {main="Kaja Sword",sub="Blurred Shield +1"}
+	sets.weapons.SwordShield = {main="Naegling",sub="Blurred Shield +1"}
 	--sets.weapons.DualWeapons = {main="Reikiko",sub="Tramontane Axe"}
 	
 end

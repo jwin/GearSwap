@@ -228,7 +228,7 @@ function init_gear_sets()
 		
 	sets.idle.PDT = set_combine(sets.idle, 
 		{main="Malignance Pole",sub="Enki Strap",head="Vanya Hood"})
-
+	
 	-- .Pet sets are for when Luopan is present.
 	sets.idle.Pet = {main="Idris",sub="Genbu's Shield",range="Dunna",ammo=empty,
         head="Azimuth Hood +1",neck="Sanctity Necklace",ear1="Etiolation Earring",ear2="Genmei Earring",

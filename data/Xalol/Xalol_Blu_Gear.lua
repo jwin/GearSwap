@@ -311,7 +311,7 @@ function init_gear_sets()
 
 	sets.idle.PDT = {main="Bolelabunga",sub="Genbu's Shield",ammo="Staunch Tathlum",
 		head="Dampening Tam",neck="Loricate Torque +1",ear1="Etiolation Earring", ear2="Genmei Earring",
-		body="Ayanmo Corazza +2",hands="Malignance Gloves",ring1="Defending Ring",ring2="Gelatinous Ring +1",
+		body="Malignance Tabard",hands="Malignance Gloves",ring1="Defending Ring",ring2="Gelatinous Ring +1",
 		back="Moonbeam Cape",waist="Flume Belt +1",legs="Ayanmo Cosciales +2",feet="Malignance Boots"}
 
 	--sets.idle.DTHippo = set_combine(sets.idle.PDT, {legs="Carmine Cuisses +1",feet="Hippo. Socks +1"})
@@ -319,12 +319,12 @@ function init_gear_sets()
 	-- Defense sets
 	sets.defense.PDT = {ammo="Staunch Tathlum",
 		head="Dampening Tam",neck="Loricate Torque +1",ear1="Suppanomimi", ear2="Brutal Earring",
-		body="Ayanmo Corazza +2",hands="Malignance Gloves",ring1="Defending Ring",ring2="Gelatinous Ring +1",
+		body="Malignance Tabard",hands="Malignance Gloves",ring1="Defending Ring",ring2="Gelatinous Ring +1",
 		back="Moonbeam Cape",waist="Flume Belt +1",legs="Ayanmo Cosciales +2",feet="Malignance Boots"}
 
 	sets.defense.MDT = {ammo="Staunch Tathlum",
 		head="Dampening Tam",neck="Loricate Torque +1",ear1="Suppanomimi", ear2="Brutal Earring",
-		body="Ayanmo Corazza +2",hands="Malignance Gloves",ring1="Defending Ring",ring2="Archon Ring",
+		body="Malignance Tabard",hands="Malignance Gloves",ring1="Defending Ring",ring2="Archon Ring",
 		back="Moonbeam Cape",waist="Flume Belt +1",legs="Ayanmo Cosciales +2",feet="Malignance Boots"}
 
     sets.defense.MEVA ={ammo="Staunch Tathlum",
@@ -340,7 +340,7 @@ function init_gear_sets()
 	
 	-- Weapons sets
 	sets.weapons.TanmoCol = {main="Tanmogayi +1",sub="Colada"}
-	sets.weapons.KajaCol = {main="Kaja Sword",sub="Colada"}
+	sets.weapons.KajaCol = {main="Naegling",sub="Colada"}
 	sets.weapons.VampClub= {main="Vampirism",sub="Nibiru Cudgel"}
 
 	-- Engaged sets
@@ -368,12 +368,12 @@ function init_gear_sets()
 
 	sets.engaged.DTLite = {ammo="Ginsen",
 		head="Adhemar Bonnet",neck="Lissome Necklace",ear1="Cessance Earring",ear2="Brutal Earring",
-		body="Adhemar Jacket",hands="Malignance Gloves",ring1="Epona's Ring",ring2="Defending Ring",
+		body="Malignance Tabard",hands="Malignance Gloves",ring1="Epona's Ring",ring2="Defending Ring",
 		back=gear.da_jse_back,waist="Windbuffet Belt +1",legs=gear.herculean_ta_legs,feet="Malignance Boots"}
 
 	sets.engaged.PDT = {ammo="Ginsen",
 		head="Adhemar Bonnet",neck="Lissome Necklace",ear1="Cessance Earring",ear2="Brutal Earring",
-		body="Adhemar Jacket",hands="Adhemar Wristbands",ring1="Epona's Ring",ring2="Petrov Ring",
+		body="Malignance Tabard",hands="Adhemar Wristbands",ring1="Epona's Ring",ring2="Petrov Ring",
 		back=gear.da_jse_back,waist="Windbuffet Belt +1",legs=gear.herculean_ta_legs,feet=gear.herculean_ta_feet}
 
 	sets.engaged.SomeAcc.DTLite = {ammo="Ginsen",

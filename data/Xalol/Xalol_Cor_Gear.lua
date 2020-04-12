@@ -269,9 +269,9 @@ function init_gear_sets()
 
 	-- Weapons sets
 	sets.weapons.Default = {main="Fettering Blade",sub="Nusku Shield",range="Molybdosis"}
-	sets.weapons.DualSavageWeapons = {main="Kaja Sword",sub="Blurred Knife +1",range="Anarchy +2"}
-	sets.weapons.DualLeadenRanged = {main="Kaja Sword",sub="Fettering Blade",range="Molybdosis"}
-	sets.weapons.DualLeadenMelee = {main="Kaja Sword",sub="Fettering Blade",range="Molybdosis"}
+	sets.weapons.DualSavageWeapons = {main="Naegling",sub="Blurred Knife +1",range="Anarchy +2"}
+	sets.weapons.DualLeadenRanged = {main="Naegling",sub="Fettering Blade",range="Molybdosis"}
+	sets.weapons.DualLeadenMelee = {main="Naegling",sub="Fettering Blade",range="Molybdosis"}
 	
     -- Engaged sets
 
